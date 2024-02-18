@@ -27,11 +27,11 @@ const LoginSignup = () => {
       body: JSON.stringify(formData),
     }).then((response) => response.json().then((data) => responseData = data))
 
-    if(responseData.success){
-      localStorage.setItem('auth-token',responseData.token);
+    if (responseData.success) {
+      localStorage.setItem('auth-token', responseData.token);
       window.location.replace("/");
     }
-    else{
+    else {
       alert(responseData.errors)
     }
   }
@@ -39,7 +39,7 @@ const LoginSignup = () => {
   const signup = async () => {
     console.log("Signup Function Executed", formData);
     let responseData;
-    await fetch('http://localhost:4000/signup', {
+    await fetch(`${process.env.REACT_APP_API_URL}/signup`, {
       method: 'POST',
       headers: {
         Accept: 'application/form-data',
@@ -48,11 +48,11 @@ const LoginSignup = () => {
       body: JSON.stringify(formData),
     }).then((response) => response.json().then((data) => responseData = data))
 
-    if(responseData.success){
-      localStorage.setItem('auth-token',responseData.token);
+    if (responseData.success) {
+      localStorage.setItem('auth-token', responseData.token);
       window.location.replace("/");
     }
-    else{
+    else {
       alert(responseData.errors)
     }
 
